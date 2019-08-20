@@ -1,5 +1,26 @@
 const assert = require('chai').assert;
 
+const firstCharsMatch = (s1, s2, count) => {
+  const pre1 = s1.substr(0, count);
+  const pre2 = s2.substr(0, count);
+  return pre1 === pre2;
+};
+
+const comparePrefixBetweenTwoWords = (word1, word2) => {
+  const minLen = Math.min(word1.length, word2.length);
+
+  let count = 0;
+  for (let i = count + 1; i < minLen + 1; i++) {
+    if (firstCharsMatch(word1, word2, i)) {
+      count = i;
+    } else {
+      break;
+    }
+  }
+
+  return word1.substr(0, count);
+};
+
 const maxPrefix = strings => {
   // Just return empty string if it's falsy or empty array
   if (!strings || strings.length === 0) {
@@ -35,13 +56,41 @@ const maxPrefix = strings => {
   return strings[0].substr(0, count);
 };
 
-const firstCharsMatch = (s1, s2, count) => {
-  const pre1 = s1.substr(0, count);
-  const pre2 = s2.substr(0, count);
-  return pre1 === pre2;
+const maxPrefixRecurse = strings => {
+  // Empty string, undefined, null, or empty array, return empty string
+  if (!strings || strings.length === 0) {
+    return '';
+  }
+
+  // Only element? return whole string
+  if (strings.length === 1) {
+    return strings[0];
+  }
+
+  // We can compare these two strings and return the common prefix
+  if (strings.length === 2) {
+    return comparePrefixBetweenTwoWords(strings[0], strings[1]);
+  }
+
+  // No termination point, need to split up these strings to simpler strings
+  // find the mid point
+  const mid = strings.length / 2;
+  const leftStrings = strings.slice(0, mid);
+  const rightStrings = strings.slice(mid);
+
+  // find the most common prefix in left list
+  const prefix1 = maxPrefixRecurse(leftStrings);
+
+  // Find the most common prefix in the right list
+  const prefix2 = maxPrefixRecurse(rightStrings);
+
+  // Now find the most common prefix between the two
+  return maxPrefixRecurse([prefix1, prefix2]);
 };
 
 module.exports = {
   firstCharsMatch,
   maxPrefix,
+  maxPrefixRecurse,
+  comparePrefixBetweenTwoWords,
 };
