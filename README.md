@@ -1,6 +1,6 @@
 # Description
 
-Two implementations on how to find the most common prefix when given a list of strings.
+Two implementations on how to find the most common prefix when given a list of strings.  Test of recursion function was implemented by copy/paste of the more straigh forward function. Should perform some timings to proove my assertion that it is indeed faster.
 
 # Install
 
