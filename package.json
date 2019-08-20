@@ -1,0 +1,16 @@
+{
+  "name": "@jsonxr/substrings",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ."
+  },
+  "keywords": [],
+  "author": "Jason Rowland <jsonxr@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0"
+  }
+}
