@@ -41,7 +41,7 @@ const maxPrefix = strings => {
         accumulator && // Starts out as true
         // This matches if the first i characters match prefix
         current.substr(0, i) === prefix &&
-        // Don't count this as a match if length of word is longer than current char
+        // Only count this as a match if length of word is equal or longer than current char
         current.length >= i
       );
     }, true);
