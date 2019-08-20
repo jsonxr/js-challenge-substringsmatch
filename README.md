@@ -1,4 +1,8 @@
-# Instructions
+# Description
+
+Two implementations on how to find the most common prefix when given a list of strings.
+
+# Install
 
     yarn install
     yarn test
